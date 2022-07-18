@@ -37,4 +37,16 @@ public class PersonDataAccessService implements PersonDao{
         DB.remove(person.get());
         return 1;
     }
+
+    @Override
+    public int updatePerson(UUID id, Person personToUpdate) {
+        return getPersonById(id).map(personToRemove -> {
+            int indexOfPersonToRemove = DB.indexOf(personToRemove);
+            if (indexOfPersonToRemove >= 0){
+                DB.set(indexOfPersonToRemove, personToUpdate);
+                return 1;
+            }
+            return 0;
+        }).orElse(0);
+    }
 }

@@ -37,4 +37,9 @@ public class PersonController {
     public void removePersonById(@PathVariable("id") UUID id){
         personService.removePersonById(id);
     }
+
+    @PutMapping(path = "{id}")
+    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person person){
+        personService.updatePerson(id, person);
+    }
 }
