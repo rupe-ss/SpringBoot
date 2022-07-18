@@ -28,4 +28,13 @@ public class PersonDataAccessService implements PersonDao{
         return DB.stream().filter(person -> person.getUuid().equals(id)).findFirst();
     }
 
+    @Override
+    public int deletePersonById(UUID id) {
+        Optional<Person> person = getPersonById(id);
+        if (getPersonById(id).isEmpty()) {
+            return 0;
+        }
+        DB.remove(person.get());
+        return 1;
+    }
 }

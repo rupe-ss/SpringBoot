@@ -3,12 +3,7 @@ package com.learning.springboot.api;
 import com.learning.springboot.model.Person;
 import com.learning.springboot.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -36,5 +31,10 @@ public class PersonController {
     @GetMapping(path="{id}")
     public Person getPersonById(@PathVariable("id") UUID id){
         return personService.getPersonById(id).orElse(null);
+    }
+
+    @DeleteMapping(path="{id}")
+    public void removePersonById(@PathVariable("id") UUID id){
+        personService.removePersonById(id);
     }
 }
