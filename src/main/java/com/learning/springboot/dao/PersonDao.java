@@ -3,6 +3,7 @@ package com.learning.springboot.dao;
 import com.learning.springboot.model.Person;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonDao {
@@ -15,4 +16,6 @@ public interface PersonDao {
     }
 
     List<Person> getAllPeople();
+
+    Optional<Person> getPersonById(UUID id);
 }
