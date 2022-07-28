@@ -15,6 +15,6 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(Employee employee){
-        return new Employee("Rupesh Khadka", "Devloper");
+        return employeeRepository.save(employee);
     }
 }
